@@ -7,16 +7,25 @@
 </head>
 <body>
 	<div class="container">
-		<input id="regInput" class="regString" placeholder="enter registration here">
-		<button class="btn" id="displayBtn">ADD</button>
+		<div class="input&btn">
+			<input id="regInput" class="regString" placeholder="enter registration here">
+			<button class="btn" id="displayBtn">Add</button>
+		</div>
+	
 		<p id="regDisplay"></p>
-			<select>
-			<option selected disabled>Select Town</option>
-			<option value="CA">Cape town</option>
-			<option value="CJ">Paarl</option>
-			<option value="CL">Stellenbosch</option>
-			<option value="other">Other</option>
-		</select>
+
+		<div>
+			<input type="radio" id="buttons" value= "CA" name="place">
+			<label for="cpt">Cape Town</label>
+
+			<input type="radio" id="buttons" value= "CL" name="place">
+			<label for="stellies">Stellenbosch</label>
+
+			<input type="radio" id="buttons" value= "CJ" name="place">
+			<label for="paarl">Paarl</label>
+			<button class="btn" id="filterBtn" onclick="filter">Filter</button>
+		</div>
+
 	</div>
 
 </body>

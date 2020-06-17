@@ -1,23 +1,43 @@
 const currRegs = localStorage["registrations"];
-let regs = [];
+let numbers = [];
 if(currRegs){
-	regs = JSON.parse(currRegs)
+	numbers = JSON.parse(currRegs)
 }
-const theRegFunction = TheRegistrations(regs);
+const theRegFunction = TheRegistrations(numbers);
 //get referance to elements
 const reg = document.querySelector(".regString");
 const btn = document.getElementById("displayBtn");
 const display = document.getElementById("regDisplay");
+const itemType = document.getElementById("buttons");
+const filterBtn = document.getElementById("filterBtn");
 
 function getRegistrations(){
 	var regVal = reg.value
-	var constant = theRegFunction.addingRegs(regVal);
-		display.innerHTML += "<li>" + regVal + "</li>";
-		
-	// if(regVal !== ""){
-	// 	display.innerHTML += '<li>' + regVal + '</li>';
-	// }
-	localStorage["registrations"] = JSON.stringify(theRegFunction.allTheRegs());
+	theRegFunction.addingRegs(regVal);
+	theRegFunction.allTheRegs();
+
+	if(regVal !== ""){
+	var test = document.createElement('section');
+	test.setAttribute('id','test');
+	var ul = document.createElement('ul');
+	document.body.appendChild(test);
+	test.appendChild(ul);
+		var li = document.createElement('li');
+		ul.appendChild(li);
+		li.innerHTML = display.innerHTML + regVal.toUpperCase();
+		li.classList.add("color");
+} 
+// else {
+// 	display.innerHTML = "enter valid registration"
+// }
+
+localStorage["registrations"] = JSON.stringify(theRegFunction.allTheRegs());
 	reg.value = "";
 }
+// function filter(){
+// var checkedRadioBtn = document.querySelector("input[name='place']:checked");
+// var buttonType = checkedRadioBtn.value
+// theRegFunction.radioSelected(buttonType);
+// }
+
 btn.addEventListener("click", getRegistrations);
