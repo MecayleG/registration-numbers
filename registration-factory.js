@@ -1,5 +1,5 @@
 function TheRegistrations(allRegs){
-	const numberPlates = allRegs || [];
+	var numberPlates = allRegs || [];
 
 
 	//function that does not add empty input and adds all registrations to array
@@ -12,20 +12,26 @@ function TheRegistrations(allRegs){
 	}
 	
 	// function displaying registrations according to radio button selected
-	// function radioSelected(buttonType){
-	// 	if(buttonType === "CA"){
-	// 		// display all items starting with ca from ls
-	// 		return(numberPlates.startsWith("CA"))
-	// 	} 
-	// 	else if( buttonType === "CL"){
-	// 		// display all items starting with cl from ls
-	// 		return(numberPlates.startsWith("CL"))
-	// 	}
-	// 	else if( buttonType === "CJ"){
-	// 		// display all items starting with cj from ls
-	// 		return(numberPlates.startsWith("CJ"))
-	// 	}
-	// }
+	function radioSelected(buttonType, plates){
+		var list = [];
+		for(var i = 0; i<plates.length; i++){
+		
+		if(buttonType === "CA" && plates[i].startsWith("CA")){
+			// display all items starting with ca from ls
+			list.push(plates[i])
+		} 
+		 if( buttonType === "CL" && plates[i].startsWith("CL")){
+			// display all items starting with cl from ls
+			list.push(plates[i])
+		}
+		if( buttonType === "CJ" && plates[i].startsWith("CJ")){
+			// display all items starting with cj from ls
+			list.push(plates[i])
+		}
+	}
+	return list;
+}
+
 
 	//function returning theRegs
 	function allTheRegs(){
@@ -34,7 +40,7 @@ function TheRegistrations(allRegs){
 	}
 	return{
 		addingRegs,
-		// radioSelected,
+		radioSelected,
 		allTheRegs
 	}
 }

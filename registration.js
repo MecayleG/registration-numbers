@@ -4,40 +4,52 @@ if(currRegs){
 	numbers = JSON.parse(currRegs)
 }
 const theRegFunction = TheRegistrations(numbers);
-//get referance to elements
 const reg = document.querySelector(".regString");
 const btn = document.getElementById("displayBtn");
 const display = document.getElementById("regDisplay");
 const itemType = document.getElementById("buttons");
 const filterBtn = document.getElementById("filterBtn");
+const theList = document.getElementById("theList");
 
+	//function that displays regs added in input field
 function getRegistrations(){
-	var regVal = reg.value
-	theRegFunction.addingRegs(regVal);
-	theRegFunction.allTheRegs();
-
+var regVal = (reg.value).toUpperCase();
 	if(regVal !== ""){
-	var test = document.createElement('section');
-	test.setAttribute('id','test');
-	var ul = document.createElement('ul');
-	document.body.appendChild(test);
-	test.appendChild(ul);
-		var li = document.createElement('li');
-		ul.appendChild(li);
-		li.innerHTML = display.innerHTML + regVal.toUpperCase();
-		li.classList.add("color");
-} 
-// else {
-// 	display.innerHTML = "enter valid registration"
-// }
+		theRegFunction.addingRegs(regVal);
+		var li = document.createElement("li");
+		theList.appendChild(li);
+		li.innerHTML =  regVal;
+		li.classList.add("color")
+		}
+	 else {
+
+			display.innerHTML = "enter a registration number";
+			display.classList.add("red")
+
+		} 
 
 localStorage["registrations"] = JSON.stringify(theRegFunction.allTheRegs());
-	reg.value = "";
+reg.value = "";
 }
-// function filter(){
-// var checkedRadioBtn = document.querySelector("input[name='place']:checked");
-// var buttonType = checkedRadioBtn.value
-// theRegFunction.radioSelected(buttonType);
-// }
+ 	// function that displays items according to radio button selected
+function filter(){
+
+var checkedRadioBtn = document.querySelector("input[name='place']:checked");
+var buttonType = checkedRadioBtn.value;
+var radio = theRegFunction.radioSelected(buttonType, numbers);
+
+if(radio){
+	theList.innerHTML = "";
+		for(var i=0; i < radio.length; i++){
+		var li = document.createElement("li");
+		theList.appendChild(li);
+		li.innerHTML = radio[i];
+		li.classList.add("color");
+	
+}
+}
+console.log(radio)
+}
 
 btn.addEventListener("click", getRegistrations);
+filterBtn.addEventListener("click", filter)

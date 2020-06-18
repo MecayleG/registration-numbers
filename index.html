@@ -3,11 +3,14 @@
 <head>
 	<title>Registrations</title>
 	<link rel="stylesheet" type="text/css" href="registration.css">
-	<span><h1>The registration display</h1></span>
+	<link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+
+	<h1>The Registration Display</h1>
 </head>
 <body>
 	<div class="container">
 		<div class="input&btn">
+			<p class="eg">e.g. CA 7685 <span>|</span> CJ 987-888 <span>|</span> CL 812 WP</p>
 			<input id="regInput" class="regString" placeholder="enter registration here">
 			<button class="btn" id="displayBtn">Add</button>
 		</div>
@@ -23,9 +26,10 @@
 
 			<input type="radio" id="buttons" value= "CJ" name="place">
 			<label for="paarl">Paarl</label>
-			<button class="btn" id="filterBtn" onclick="filter">Filter</button>
+			&nbsp;
+			<button class="btn" id="filterBtn">Filter</button>
 		</div>
-
+		<ul id="theList"></ul>
 	</div>
 
 </body>
