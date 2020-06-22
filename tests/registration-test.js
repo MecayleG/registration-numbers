@@ -1,18 +1,18 @@
 describe("The registration numbers exercise", function(){
 	describe("The addingRegs function", function(){
-		it("should add  registrations that start with CA local storage", function(){
+		it("should add  a registration number to local storage", function(){
 			let theRegFunction = TheRegistrations(["CA 888", "CJ 90909", "CL 760-555"])
 			var input = "CA 79247";
 			theRegFunction.addingRegs(input);
 			assert.deepEqual(theRegFunction.allTheRegs(), ["CA 888", "CJ 90909", "CL 760-555", "CA 79247"]);
 		});
-		it("should add  registrations that start with CJ local storage", function(){
+		it("should add  a registration number to local storage", function(){
 			let theRegFunction = TheRegistrations(["CA 888", "CJ 90909", "CL 760-555", "CA 79247"])
 			var input = "CJ 888-256";
 			theRegFunction.addingRegs(input);
 			assert.deepEqual(theRegFunction.allTheRegs(), ["CA 888", "CJ 90909", "CL 760-555","CA 79247", "CJ 888-256"]);
 		});
-		it("should add  registrations that start with CL local storage", function(){
+		it("should add  a registration number to local storage", function(){
 			let theRegFunction = TheRegistrations(["CA 888", "CJ 90909", "CL 760-555", "CA 79247", "CJ 888-256"])
 			var input = "CL 10101";
 			theRegFunction.addingRegs(input);
