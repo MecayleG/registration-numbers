@@ -20,23 +20,22 @@ describe("The registration numbers exercise", function(){
 		});
 		describe("The radioSelected function should filter registrations for area selected", function(){
 		it("should display all registrations starting with CA for Cape Town", function(){
-			let theRegFunction = TheRegistrations();
+			let theRegFunction = TheRegistrations(["CA 888", "CJ 90909", "CL 760-555", "CA 79247", "CJ 888-256", "CL 10101"]);
 			var buttonType = "CA";
-			var plates = ["CA 888", "CJ 90909", "CL 760-555", "CA 79247", "CJ 888-256", "CL 10101"]
-			assert.deepEqual(theRegFunction.radioSelected(buttonType, plates), ["CA 888",  "CA 79247"]);
+	
+			assert.deepEqual(theRegFunction.radioSelected(buttonType), ["CA 888",  "CA 79247"]);
 		});
 		
 		it("should display all registrations starting with CJ for Paarl", function(){
-			let theRegFunction = TheRegistrations();
+			let theRegFunction = TheRegistrations(["CA 888", "CJ 90909", "CL 760-555", "CA 79247", "CJ 888-256", "CL 10101", "CJ 6743"]);
 			var buttonType = "CJ";
-			var plates = ["CA 888", "CJ 90909", "CL 760-555", "CA 79247", "CJ 888-256", "CL 10101", "CJ 6743"]
-			assert.deepEqual(theRegFunction.radioSelected(buttonType, plates), ["CJ 90909",  "CJ 888-256", "CJ 6743"]);
+		
+			assert.deepEqual(theRegFunction.radioSelected(buttonType), ["CJ 90909",  "CJ 888-256", "CJ 6743"]);
 		});
 		it("should display all registrations starting with CL for Stellenbosch", function(){
-			let theRegFunction = TheRegistrations();
+			let theRegFunction = TheRegistrations(["CL 888", "CJ 90909", "CL 760-555", "CA 79247", "CJ 888-256", "CL 10101", "CJ 6743", "CL 666"]);
 			var buttonType = "CL";
-			var plates = ["CL 888", "CJ 90909", "CL 760-555", "CA 79247", "CJ 888-256", "CL 10101", "CJ 6743", "CL 666"]
-			assert.deepEqual(theRegFunction.radioSelected(buttonType, plates), ["CL 888",  "CL 760-555", "CL 10101", "CL 666"]);
+			assert.deepEqual(theRegFunction.radioSelected(buttonType), ["CL 888",  "CL 760-555", "CL 10101", "CL 666"]);
 		});
 	});
 	});

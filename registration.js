@@ -14,17 +14,23 @@ const theList = document.getElementById("theList");
 	//function that displays regs added in input field
 function getRegistrations(){
 var regVal = (reg.value).toUpperCase();
-	if(regVal !== ""){
-		theRegFunction.addingRegs(regVal);
-		var li = document.createElement("li");
-		theList.appendChild(li);
-		li.innerHTML =  regVal;
-		li.classList.add("color")
+theRegFunction.addingRegs(regVal);
+	if(regVal !== "" ){
+		if(regVal.startsWith("CA") || regVal.startsWith("CJ") || regVal.startsWith("CL")){
+			var li = document.createElement("li");
+			theList.appendChild(li);
+			li.innerHTML =  regVal;
+			li.classList.add("color")
 		}
+		else{
+			display.innerHTML = "enter a valid registration number";
+			display.classList.add("red")
+		}
+	}
 	 else {
 
 			display.innerHTML = "enter a registration number";
-			display.classList.add("red")
+			display.classList.add("red");
 
 		} 
 
@@ -48,7 +54,6 @@ if(radio){
 	
 }
 }
-console.log(radio)
 }
 
 btn.addEventListener("click", getRegistrations);
