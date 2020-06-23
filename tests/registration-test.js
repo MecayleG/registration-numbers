@@ -19,6 +19,12 @@ describe("The registration numbers exercise", function(){
 			assert.deepEqual(theRegFunction.allTheRegs(), ["CA 888", "CJ 90909", "CL 760-555", "CA 79247", "CJ 888-256", "CL 10101"]);
 		});
 		describe("The radioSelected function should filter registrations for area selected", function(){
+		it("should display all registration numbers", function(){
+			let theRegFunction = TheRegistrations(["CL 888", "CJ 90909", "CL 760-555", "CA 79247", "CJ 888-256", "CL 10101", "CJ 6743", "CL 666"]);
+			var buttonType = "all";
+			assert.deepEqual(theRegFunction.radioSelected(buttonType), ["CL 888", "CJ 90909", "CL 760-555", "CA 79247", "CJ 888-256", "CL 10101", "CJ 6743", "CL 666"]);
+		});
+			
 		it("should display all registrations starting with CA for Cape Town", function(){
 			let theRegFunction = TheRegistrations(["CA 888", "CJ 90909", "CL 760-555", "CA 79247", "CJ 888-256", "CL 10101"]);
 			var buttonType = "CA";

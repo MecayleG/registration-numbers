@@ -29,7 +29,6 @@ button:hover, button:focus {
 	background-color: #00ff00;
 }
 ul{
-	display: inline-block;
 	list-style: none;
 
 }
@@ -40,6 +39,7 @@ ul{
 	border-radius: 5px;
 	margin: 5px;
 	padding: 10px;
+	display: inline-block;
 }
 .red{
 	color: #cc0000;

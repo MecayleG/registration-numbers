@@ -11,6 +11,9 @@ const itemType = document.getElementById("buttons");
 const filterBtn = document.getElementById("filterBtn");
 const theList = document.getElementById("theList");
 
+window.addEventListener("load", function(){
+	displaying(theRegFunction.allTheRegs());
+})
 	//function that displays regs added in input field
 function getRegistrations(){
 var regVal = (reg.value).toUpperCase();
@@ -32,28 +35,40 @@ theRegFunction.addingRegs(regVal);
 			display.innerHTML = "enter a registration number";
 			display.classList.add("red");
 
-		} 
 
-localStorage["registrations"] = JSON.stringify(theRegFunction.allTheRegs());
-reg.value = "";
+		} 
+		setTimeout(function(){
+		display.innerHTML = "";
+		}, 4000)
+
+	localStorage["registrations"] = JSON.stringify(theRegFunction.allTheRegs());
+	reg.value = "";
 }
- 	// function that displays items according to radio button selected
+	// function that displays items according to radio button selected
 function filter(){
 
 var checkedRadioBtn = document.querySelector("input[name='place']:checked");
 var buttonType = checkedRadioBtn.value;
-var radio = theRegFunction.radioSelected(buttonType, numbers);
-
+var radio = theRegFunction.radioSelected(buttonType);
+console.log(radio.length)
+console.log(buttonType)
 if(radio){
 	theList.innerHTML = "";
-		for(var i=0; i < radio.length; i++){
-		var li = document.createElement("li");
-		theList.appendChild(li);
-		li.innerHTML = radio[i];
-		li.classList.add("color");
-	
+		displaying(radio);
+	}
 }
+
+
+function displaying(list){
+	for( var i=0; i< list.length; i++){
+		showReg(list[i])
+	}
 }
+function showReg(item){
+	var li = document.createElement("li");
+			theList.appendChild(li);
+			li.innerHTML =  item;
+			li.classList.add("color")
 }
 
 btn.addEventListener("click", getRegistrations);
