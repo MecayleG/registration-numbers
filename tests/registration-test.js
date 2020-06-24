@@ -1,22 +1,73 @@
 describe("The registration numbers exercise", function(){
 	describe("The addingRegs function", function(){
-		it("should add  a registration number to local storage", function(){
+		it("should not add to local storage if input is empty", function(){
 			let theRegFunction = TheRegistrations(["CA 888", "CJ 90909", "CL 760-555"])
 			var input = "CA 79247";
 			theRegFunction.addingRegs(input);
 			assert.deepEqual(theRegFunction.allTheRegs(), ["CA 888", "CJ 90909", "CL 760-555", "CA 79247"]);
 		});
-		it("should add  a registration number to local storage", function(){
+		it("should add  the registration number CA 79247 to local storage", function(){
+			let theRegFunction = TheRegistrations(["CA 888", "CJ 90909", "CL 760-555"])
+			var input = "CA 79247";
+			theRegFunction.addingRegs(input);
+			assert.deepEqual(theRegFunction.allTheRegs(), ["CA 888", "CJ 90909", "CL 760-555", "CA 79247"]);
+		});
+		it("should add  the registration number CJ 888-256 to local storage", function(){
 			let theRegFunction = TheRegistrations(["CA 888", "CJ 90909", "CL 760-555", "CA 79247"])
 			var input = "CJ 888-256";
 			theRegFunction.addingRegs(input);
 			assert.deepEqual(theRegFunction.allTheRegs(), ["CA 888", "CJ 90909", "CL 760-555","CA 79247", "CJ 888-256"]);
 		});
-		it("should add  a registration number to local storage", function(){
+		it("should add  the registration number CL 1010 to local storage", function(){
 			let theRegFunction = TheRegistrations(["CA 888", "CJ 90909", "CL 760-555", "CA 79247", "CJ 888-256"])
-			var input = "CL 10101";
+			var input = "CL 1010";
 			theRegFunction.addingRegs(input);
-			assert.deepEqual(theRegFunction.allTheRegs(), ["CA 888", "CJ 90909", "CL 760-555", "CA 79247", "CJ 888-256", "CL 10101"]);
+			assert.deepEqual(theRegFunction.allTheRegs(), ["CA 888", "CJ 90909", "CL 760-555", "CA 79247", "CJ 888-256", "CL 1010"]);
+		});
+		it("should not add  the registration number CK 5556 to local storage", function(){
+			let theRegFunction = TheRegistrations(["CA 888", "CJ 90909", "CL 760-555", "CA 79247", "CJ 888-256"])
+			var input = "CK 5556";
+			theRegFunction.addingRegs(input);
+			assert.deepEqual(theRegFunction.allTheRegs(), ["CA 888", "CJ 90909", "CL 760-555", "CA 79247", "CJ 888-256"]);
+		});
+		it("should not add  the registration number CA 457 WP to local storage", function(){
+			let theRegFunction = TheRegistrations(["CA 888", "CJ 90909", "CL 760-555", "CA 79247", "CJ 888-256"])
+			var input = "CA 457 WP";
+			theRegFunction.addingRegs(input);
+			assert.deepEqual(theRegFunction.allTheRegs(), ["CA 888", "CJ 90909", "CL 760-555", "CA 79247", "CJ 888-256"]);
+		});
+		it("should not add  the registration number CY 900-123 to local storage", function(){
+			let theRegFunction = TheRegistrations(["CA 888", "CJ 90909", "CL 760-555", "CA 79247", "CJ 888-256"])
+			var input = "CY 900-123";
+			theRegFunction.addingRegs(input);
+			assert.deepEqual(theRegFunction.allTheRegs(), ["CA 888", "CJ 90909", "CL 760-555", "CA 79247", "CJ 888-256"]);
+		});
+		describe("the validate function", function(){
+			it("should print out valid reg format CA 7689", function(){
+			let theRegFunction = TheRegistrations()
+			var reg = "CA 7689";
+			assert.deepEqual(theRegFunction.validate(reg), "CA 7689");
+		});
+			it("should print out valid reg format CL 76220", function(){
+			let theRegFunction = TheRegistrations()
+			var reg = "CL 76220";
+			assert.deepEqual(theRegFunction.validate(reg), "CL 76220");
+		});
+			it("should print out valid reg format CJ 560-733", function(){
+			let theRegFunction = TheRegistrations()
+			var reg = "CJ 560-733";
+			assert.deepEqual(theRegFunction.validate(reg), "CJ 560-733");
+		});
+			it("should return false for invalid reg format CK 5087", function(){
+			let theRegFunction = TheRegistrations()
+			var reg = "CK 5087";
+			assert.deepEqual(theRegFunction.validate(reg), false);
+		});
+			it("should return false for invalid reg format CY 098-543", function(){
+			let theRegFunction = TheRegistrations()
+			var reg = "CY 098-543";
+			assert.deepEqual(theRegFunction.validate(reg), false);
+		});
 		});
 		describe("The radioSelected function should filter registrations for area selected", function(){
 		it("should display all registration numbers", function(){

@@ -14,15 +14,15 @@ const theList = document.getElementById("theList");
 window.addEventListener("load", function(){
 	displaying(theRegFunction.allTheRegs());
 })
-	//function that displays regs added in input field
+	//function that checks if regs are valid or not
 function getRegistrations(){
 var regVal = (reg.value).toUpperCase();
 theRegFunction.addingRegs(regVal);
 	if(regVal !== "" ){
-		if(regVal.startsWith("CA") || regVal.startsWith("CJ") || regVal.startsWith("CL")){
+		if(theRegFunction.validate(regVal)){
 			var li = document.createElement("li");
 			theList.appendChild(li);
-			li.innerHTML =  regVal;
+			li.innerHTML =  theRegFunction.validate(regVal);
 			li.classList.add("color")
 		}
 		else{
