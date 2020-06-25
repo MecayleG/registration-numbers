@@ -5,7 +5,7 @@ function TheRegistrations(allRegs){
 	//function that does not add empty input and adds all valid registrations to array
 	function addingRegs(input){
 		if(input !== ""){
-			if(/C[ALJ] \d{3,5}$/.test(input) || /C[ALJ] \d{3}-\d{3}$/.test(input)){
+			if(/C[ALJ] \d{3,5}$/.test(input) || /C[ALJ] \d+\s|-\d+$/.test(input)){
 				numberPlates.push(input)
 			} else {
 				return false;
@@ -14,8 +14,13 @@ function TheRegistrations(allRegs){
 	}
 	//function that checks if reg entered is valid according to regEx
 	function validate(reg){
-		if(/C[ALJ] \d{3,5}$/.test(reg) || /C[ALJ] \d{3}-\d{3}$/.test(reg)){
-			return reg;
+		if(/C[ALJ] \d{3,5}$/.test(reg) || /C[ALJ] \d+\s|-\d+$/.test(reg)){
+			if(!numberPlates.includes(reg)){
+				return reg;
+			} else{
+				return false
+			}
+			
 		} else{
 			return false;
 		}

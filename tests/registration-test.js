@@ -12,6 +12,12 @@ describe("The registration numbers exercise", function(){
 			theRegFunction.addingRegs(input);
 			assert.deepEqual(theRegFunction.allTheRegs(), ["CA 888", "CJ 90909", "CL 760-555", "CA 79247"]);
 		});
+		it("should add  the registration number CL 792 476 to local storage", function(){
+			let theRegFunction = TheRegistrations(["CA 888", "CJ 90909", "CL 760-555", "CA 79247"])
+			var input = "CL 792 476";
+			theRegFunction.addingRegs(input);
+			assert.deepEqual(theRegFunction.allTheRegs(), ["CA 888", "CJ 90909", "CL 760-555", "CA 79247", "CL 792 476"]);
+		});
 		it("should add  the registration number CJ 888-256 to local storage", function(){
 			let theRegFunction = TheRegistrations(["CA 888", "CJ 90909", "CL 760-555", "CA 79247"])
 			var input = "CJ 888-256";
@@ -30,15 +36,15 @@ describe("The registration numbers exercise", function(){
 			theRegFunction.addingRegs(input);
 			assert.deepEqual(theRegFunction.allTheRegs(), ["CA 888", "CJ 90909", "CL 760-555", "CA 79247", "CJ 888-256"]);
 		});
-		it("should not add  the registration number CA 457 WP to local storage", function(){
+		it("should not add  the registration number WP 457  to local storage", function(){
 			let theRegFunction = TheRegistrations(["CA 888", "CJ 90909", "CL 760-555", "CA 79247", "CJ 888-256"])
-			var input = "CA 457 WP";
+			var input = "WP 457 ";
 			theRegFunction.addingRegs(input);
 			assert.deepEqual(theRegFunction.allTheRegs(), ["CA 888", "CJ 90909", "CL 760-555", "CA 79247", "CJ 888-256"]);
 		});
 		it("should not add  the registration number CY 900-123 to local storage", function(){
 			let theRegFunction = TheRegistrations(["CA 888", "CJ 90909", "CL 760-555", "CA 79247", "CJ 888-256"])
-			var input = "CY 900-123";
+			var input = "CY 900 123";
 			theRegFunction.addingRegs(input);
 			assert.deepEqual(theRegFunction.allTheRegs(), ["CA 888", "CJ 90909", "CL 760-555", "CA 79247", "CJ 888-256"]);
 		});
@@ -65,7 +71,12 @@ describe("The registration numbers exercise", function(){
 		});
 			it("should return false for invalid reg format CY 098-543", function(){
 			let theRegFunction = TheRegistrations()
-			var reg = "CY 098-543";
+			var reg = "CY 098 543";
+			assert.deepEqual(theRegFunction.validate(reg), false);
+		});
+			it("should not add a registration number again if it has already been entered", function(){
+			let theRegFunction = TheRegistrations( ["CA 888", "CJ 90909", "CL 760-555", "CA 79247", "CJ 888-256"])
+			var reg = "CA 888";
 			assert.deepEqual(theRegFunction.validate(reg), false);
 		});
 		});

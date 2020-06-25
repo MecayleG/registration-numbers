@@ -24,6 +24,7 @@ theRegFunction.addingRegs(regVal);
 			theList.appendChild(li);
 			li.innerHTML =  theRegFunction.validate(regVal);
 			li.classList.add("color")
+			localStorage["registrations"] = JSON.stringify(theRegFunction.allTheRegs());
 		}
 		else{
 			display.innerHTML = "enter a valid registration number";
@@ -40,8 +41,6 @@ theRegFunction.addingRegs(regVal);
 		setTimeout(function(){
 		display.innerHTML = "";
 		}, 4000)
-
-	localStorage["registrations"] = JSON.stringify(theRegFunction.allTheRegs());
 	reg.value = "";
 }
 	// function that displays items according to radio button selected
