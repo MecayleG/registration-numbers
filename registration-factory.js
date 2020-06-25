@@ -15,17 +15,20 @@ function TheRegistrations(allRegs){
 	//function that checks if reg entered is valid according to regEx
 	function validate(reg){
 		if(/C[ALJ] \d{3,5}$/.test(reg) || /C[ALJ] \d+\s|-\d+$/.test(reg)){
-			if(!numberPlates.includes(reg)){
-				return reg;
-			} else{
-				return false
-			}
+			return reg;
 			
 		} else{
 			return false;
 		}
 	}	
-	
+
+	function noRepeat(entered){
+		if(!numberPlates.includes(entered)){
+			return entered;
+		} else {
+			return false;
+		}
+	}
 	// function displaying registrations according to radio button selected
 	function radioSelected(buttonType){
 		if( buttonType == "all"){
@@ -48,11 +51,12 @@ function TheRegistrations(allRegs){
 	//function returning theRegs
 	function allTheRegs(){
 		console.log(numberPlates)
-		return numberPlates;
+		return numberPlates;O
 	}
 	return{
 		addingRegs,
 		validate,
+		noRepeat,
 		radioSelected,
 		allTheRegs
 	}

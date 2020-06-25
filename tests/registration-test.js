@@ -74,11 +74,18 @@ describe("The registration numbers exercise", function(){
 			var reg = "CY 098 543";
 			assert.deepEqual(theRegFunction.validate(reg), false);
 		});
-			it("should not add a registration number again if it has already been entered", function(){
-			let theRegFunction = TheRegistrations( ["CA 888", "CJ 90909", "CL 760-555", "CA 79247", "CJ 888-256"])
-			var reg = "CA 888";
-			assert.deepEqual(theRegFunction.validate(reg), false);
 		});
+		describe("the noRepeat function", function(){
+			it("should not add a registration number again if it has already been entered", function(){
+				let theRegFunction = TheRegistrations(["CA 123", "CJ 90909", "CL 760-555", "CA 79247", "CJ 888-256", "CL 10101", "CJ 6743", "CL 666"])
+				var entered = "CA 123";
+				assert.deepEqual(theRegFunction.noRepeat(entered), false)
+			});
+			it("should not add a registration number again if it has already been entered", function(){
+				let theRegFunction = TheRegistrations(["CJ 457 000", "CJ 90909", "CL 760-555", "CA 79247", "CJ 888-256", "CL 10101", "CJ 6743", "CL 666"])
+				var entered = "CJ 457 000";
+				assert.deepEqual(theRegFunction.noRepeat(entered), false)
+			})
 		});
 		describe("The radioSelected function should filter registrations for area selected", function(){
 		it("should display all registration numbers", function(){

@@ -18,6 +18,7 @@ window.addEventListener("load", function(){
 function getRegistrations(){
 var regVal = (reg.value).toUpperCase();
 theRegFunction.addingRegs(regVal);
+theRegFunction.noRepeat(theRegFunction.validate(regVal));
 	if(regVal !== "" ){
 		if(theRegFunction.validate(regVal)){
 			var li = document.createElement("li");
