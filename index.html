@@ -18,18 +18,15 @@
 		<p id="regDisplay"></p>
 
 		<div>
-			<input type="radio" id="buttons" value= "CA" name="place">
-			<label for="cpt">Cape Town</label>
+			<select class="select">
+				<option value="default">Select Town</option>
+				<option value="CA">Cape Town</option>
+				<option value="CL">Stellenbosch</option>
+				<option value="CJ">Paarl</option>
+				<option value="all">Show All</option>
+			</select>
+			
 
-			<input type="radio" id="buttons" value= "CL" name="place">
-			<label for="stellies">Stellenbosch</label>
-
-			<input type="radio" id="buttons" value= "CJ" name="place">
-			<label for="paarl">Paarl</label>
-			<input type="radio" id="buttons" value= "all" name="place">
-			<label for="paarl">Show All</label>
-			&nbsp;
-			<button class="btn" id="filterBtn">Filter</button>
 		</div>
 		<ul id="theList"></ul>
 	</div>

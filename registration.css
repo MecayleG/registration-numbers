@@ -24,6 +24,7 @@ cursor: pointer;
 padding: 10px;
 border-radius: 5px;
 font-size: 20px;
+background-color: #d9d9d9;
 }
 button:hover, button:focus {
 	background-color: #00ff00;
@@ -44,25 +45,19 @@ ul{
 .red{
 	color: #cc0000;
 }
-input[type='radio']{
-        width: 1em;
-        height: 1em;
-        }
 
+select{
+	padding: 10px;
+	font-size: 20px;
+	background-color: #d9d9d9;
+}
 
-input[type='radio']:checked:after {
-        width: 1em;
-        height: 1em;
-        border-radius: 15px;
-        top: -2px;
-        left: -1px;
-        position: relative;
-        background-color: #00ff00;
-        content: '';
-        display: inline-block;
-        visibility: visible;
-        border: 1px solid white;
-    }
-    span{
+select:hover, select:focus{
+	background-color: #00ff00;
+}
+span{
     	color: #00ff00;
     }
+input::placeholder{
+	font-size: 18px;
+}
